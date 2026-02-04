@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Invite Check</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef, #a8edea, #fed6e3);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+        
+        .question {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: radial-gradient(circle, #ff6b6b, #ff4757);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .balloon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .balloon:nth-child(2) { top: 20%; right: 15%; animation-delay: 2s; background: radial-gradient(circle, #ffa500, #ff7f50); }
+        .balloon:nth-child(3) { top: 30%; left: 20%; animation-delay: 4s; background: radial-gradient(circle, #a8edea, #56ab2f); }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .cake {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 60px;
+            background: #d2691e;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .cake::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: #fff;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .cake::after {
+            content: '🎂';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Birthday Invite Check 🎉</h1>
+        <p class="question">Am I invited to your birthday?</p>
+        <div class="buttons">
+            <button onclick="respond('Yes')">Yes</button>
+            <button onclick="respond('Definitely Yes')">Definitely Yes</button>
+        </div>
+    </div>
+    
+    <!-- Floating balloons -->
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    
+    <!-- Cake at bottom -->
+    <div class="cake"></div>
+    
+    <script>
+        function respond(answer) {
+            alert(`Yay! ${answer}! 🎈 Can't wait for the party!`);
+        }
+    </script>
+</body>
+</html>
