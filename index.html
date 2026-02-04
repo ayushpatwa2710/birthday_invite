@@ -3,103 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Important Question!</title>
+    <title>Am I Invited? ✨</title>
     <style>
-        body {
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial Rounded MT Bold', 'Helvetica', sans-serif;
+            /* Festive Bokeh Background */
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('https://images.unsplash.com/photo-1530103043960-ef38714abb15?q=80&w=2069&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
             overflow: hidden;
-            text-align: center;
         }
 
-        /* Floating Confetti Effect */
-        .confetti {
+        /* Floating Sparkles Overlay */
+        .sparkles {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #ff4081;
-            animation: fall 3s linear infinite;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            background-image: radial-gradient(circle, white 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: twinkle 3s infinite;
+            opacity: 0.3;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 3rem;
+            background: #e91e63; /* The vibrant pink from your image */
+            padding: 40px 60px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            z-index: 10;
-            max-width: 400px;
-            border: 5px solid #fff;
+            border: 8px solid #ffd700; /* Gold glitter-style border */
+            box-shadow: 0 0 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(0,0,0,0.2);
+            text-align: center;
+            position: relative;
+            max-width: 90%;
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
+        /* Birthday Decorations */
+        .decoration {
+            position: absolute;
+            font-size: 40px;
+        }
+        .gift-tl { top: -30px; left: -30px; transform: rotate(-15deg); }
+        .gift-br { bottom: -30px; right: -30px; transform: rotate(15deg); }
+        .balloon-tr { top: -40px; right: -20px; }
 
         h1 {
-            color: #d81b60;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
         }
 
-        .btn-container {
+        .btn-group {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         button {
-            padding: 15px 25px;
+            padding: 15px 35px;
             font-size: 1.2rem;
             border: none;
-            border-radius: 50px;
+            border-radius: 30px;
             cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
             font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .yes-btn {
-            background-color: #f06292;
-            color: white;
-        }
-
-        .definitely-btn {
-            background-color: #ec407a;
-            color: white;
-        }
+        .yes-btn { background: white; color: #e91e63; }
+        .definitely-btn { background: white; color: #e91e63; }
 
         button:hover {
-            transform: scale(1.05);
-            filter: brightness(1.1);
+            transform: translateY(-5px) scale(1.05);
+            background: #ffd700;
+            color: #333;
         }
 
-        @keyframes fall {
-            to { transform: translateY(100vh) rotate(360deg); }
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.5; }
         }
     </style>
 </head>
 <body>
 
-    <script>
-        for (let i = 0; i < 50; i++) {
-            let confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.animationDelay = Math.random() * 3 + 's';
-            confetti.style.backgroundColor = ['#ff4081','#ffeb3b','#00e676','#2979ff'][Math.floor(Math.random()*4)];
-            document.body.appendChild(confetti);
-        }
-    </script>
+    <div class="sparkles"></div>
 
     <div class="card">
-        <span>🎂</span>
-        <h1>Am I invited to your birthday?</h1>
-        <div class="btn-container">
-            <button class="yes-btn" onclick="alert('Yay! See you there! 🎉')">Yes!</button>
-            <button class="definitely-btn" onclick="alert('I knew it! I\'ll bring the best gift! 🎁')">Definitely Yes!</button>
+        <div class="decoration gift-tl">🎁</div>
+        <div class="decoration balloon-tr">🎈</div>
+        <div class="decoration gift-br">🎁</div>
+        
+        <h1>Am I invited to<br>your birthday?</h1>
+        
+        <div class="btn-group">
+            <button class="yes-btn" onclick="celebrate('YES! 🎉')">Yes!</button>
+            <button class="definitely-btn" onclick="celebrate('DEFINITELY! 🎂')">Definitely Yes!</button>
         </div>
     </div>
 
+    <script>
+        function celebrate(msg) {
+            alert(msg + "\nI'm already picking out my outfit!");
+            // Optional: add more logic here if you want things to explode with emoji
+        }
+    </script>
 </body>
 </html>
